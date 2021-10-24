@@ -13,3 +13,4 @@ django-cors-headers
 django-heroku
 python-dotenv
 django_extensions
+whitenoise

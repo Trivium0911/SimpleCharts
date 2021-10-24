@@ -1,0 +1,15 @@
+asyncpg
+fastapi
+uvicorn
+psycopg2-binary
+pytest
+pytest-asyncio
+httpx
+psycopg2
+dj-database-url
+django-ipware
+django
+django-cors-headers
+django-heroku
+python-dotenv
+django_extensions

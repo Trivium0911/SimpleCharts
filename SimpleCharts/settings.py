@@ -2,6 +2,9 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import dj_database_url
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -26,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "charts",
 ]
 
 MIDDLEWARE = [
@@ -61,13 +65,11 @@ WSGI_APPLICATION = 'SimpleCharts.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+DATABASE_URL = os.getenv('DATABASE_URL') or "sqlite://db.sqlite3"
+assert DATABASE_URL, "no DATABASE_URL provided"
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": dj_database_url.parse(DATABASE_URL),
     }
-}
 
 
 # Password validation

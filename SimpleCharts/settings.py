@@ -3,7 +3,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import dj_database_url
-
+import pylast
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -133,3 +133,13 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
+
+#LAST_FM_SETTINGS
+API_KEY = os.getenv('API_KEY')
+API_SECRET = os.getenv('API_SECRET')
+lastfm_network = pylast.LastFMNetwork(
+    api_key=API_KEY,
+    api_secret=API_SECRET,
+    username=lastfm_username,
+    password_hash=lastfm_password_hash,
+)

@@ -135,6 +135,8 @@ CORS_ALLOW_HEADERS = [
 ]
 
 #LAST_FM_SETTINGS
+lastfm_username=os.getenv("lastfm_username")
+lastfm_password_hash= pylast.md5(os.getenv("lastfm_password_hash"))
 API_KEY = os.getenv('API_KEY')
 API_SECRET = os.getenv('API_SECRET')
 lastfm_network = pylast.LastFMNetwork(

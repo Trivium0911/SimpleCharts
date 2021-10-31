@@ -3,11 +3,12 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import dj_database_url
-import pylast
-
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
+BASE_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = BASE_DIR / "charts"
+PROJECT_TEMPLATES_DIR = PROJECT_DIR / "templates"
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -51,7 +52,9 @@ ROOT_URLCONF = 'SimpleCharts.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            PROJECT_TEMPLATES_DIR
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,14 +137,4 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 
-#LAST_FM_SETTINGS
-lastfm_username=os.getenv("lastfm_username")
-lastfm_password_hash= pylast.md5(os.getenv("lastfm_password_hash"))
-API_KEY = os.getenv('API_KEY')
-API_SECRET = os.getenv('API_SECRET')
-lastfm_network = pylast.LastFMNetwork(
-    api_key=API_KEY,
-    api_secret=API_SECRET,
-    username=lastfm_username,
-    password_hash=lastfm_password_hash,
-)
+

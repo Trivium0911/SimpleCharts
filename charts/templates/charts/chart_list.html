@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-  {{ object_list }}
+   Artist    -    song  - album  -   date
+  {% for list in object_list %}
+    <section> {{ list.artist }} - {{ list.song_title }} - {{ list.album }} - {{ list.date }}  </section>
+  {% endfor %}
 </body>
 </html>

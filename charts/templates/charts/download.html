@@ -5,13 +5,23 @@
     <title>Title</title>
 </head>
 <body>
-            <form action="" method="post">
+            <form action="" method="POST">
                 {% csrf_token %}
-                <button class="btn btn-primary" action = "{{ download.download_user_db }}" method = "POST" > Download </button>
-                <label for="{{ download.download_user_db }}">Downloading progress:</label>
+                {{ download.download_user_db }}
+                <button type="submit" class="btn btn-primary"> Download
+                    {% if download.download_user_db %}
+                    <label for="{{ download.download_user_db }}"> progress:</label>
 
                 <progress id="{{ download.download_user_db }}" max="100" >  </progress>
+                    {% endif %}
+                </button>
+
             </form>
+
+
+     <form><h>
+ <input type="button" value="Go back!" onclick="history.go(-1)">
+    </form> </h>
 
 </body>
 </html>

@@ -5,9 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-         <form action="" method="post">
+         <form action="" method="POST">
              {% csrf_token %}
-              <button class="btn btn-primary" action = "{{ delete.delete_user_db }}" method = "POST" > DELETE </button>
+             {{ delete.delete_user_db }}
+              <button type = "submit" class="btn btn-primary"  > DELETE </button>
+            {% if action %}
+
+              <p>  db deleted </p>
+         {% endif %}
           </form>
-</body>
+
+    <form>
+ <input type="button" value="Go back!" onclick="history.go(-1)">
+    </form>
+
+
 </html>

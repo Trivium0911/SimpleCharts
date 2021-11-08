@@ -5,12 +5,19 @@
     <title>Title</title>
 </head>
 <body>
+
+    Hello, {{ object_list.0.get_username }}
+    Your last entry in the database on {{ list.date.0 }}
+
+
+
  <form  action ="download/" >
-                <button> update db </button>
+                <button> download db </button>
         </form>
  <form  action ="delete/">
                 <button> del db </button>
         </form>
+    <form >
 <table border="1">
             <tr><th>ARTIST</th><th>SONG</th><th>ALBUM</th><th>DATE</th></tr>
        {% for list in object_list %}
@@ -20,6 +27,6 @@
      Sorry, no charts for you. Please, download base from last.fm
         {% endfor %}
 </table>
-
+</form>
 </body>
 </html>

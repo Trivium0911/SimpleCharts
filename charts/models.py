@@ -33,3 +33,5 @@ class Chart(models.Model):
         return f"{self.__class__.__name__}(username = {self.username}, artist = {self.artist}," \
                f" song_title = {self.song_title}, album = {self.album}, date = {self.date}"
 
+    def get_absolute_url(self) -> str:
+        return f"/charts/"

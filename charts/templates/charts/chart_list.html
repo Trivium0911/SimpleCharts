@@ -5,15 +5,21 @@
     <title>Title</title>
 </head>
 <body>
-
+ <form  action ="download/" >
+                <button> update db </button>
+        </form>
+ <form  action ="delete/">
+                <button> del db </button>
+        </form>
 <table border="1">
             <tr><th>ARTIST</th><th>SONG</th><th>ALBUM</th><th>DATE</th></tr>
        {% for list in object_list %}
 
-    <tr><td>{{list.artist}}</td><td>{{ list.song_title }}</td><td>{{ list.album }}</td><td>{{ list.date }}</td><td></tr>
-
+    <tr><td>{{ list.artist }}</td><td>{{ list.song_title }}</td><td>{{ list.album }}</td><td>{{ list.date }}</td><td></tr>
+        {% empty %}
+     Sorry, no charts for you. Please, download base from last.fm
         {% endfor %}
-</table>;
+</table>
 
 </body>
 </html>

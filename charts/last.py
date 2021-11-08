@@ -1,6 +1,9 @@
 import os
 import pylast
 from datetime import timedelta
+
+from django.http import request
+from django.shortcuts import render
 from django.utils import timezone
 import datetime
 from charts.models import Chart
@@ -32,7 +35,7 @@ def get_lastfm_data():
     return top_list
 
 def pack_to_db():
-    chart = Chart()
+    # chart = Chart()
     top_list = lastfm_network.get_user(lastfm_username).get_recent_tracks(time_from=past_date, time_to=date, limit=None)
     for top_item in top_list:
         date_utc = datetime.date.fromtimestamp(int(top_item.timestamp))
@@ -47,11 +50,7 @@ def pack_to_db():
         chart.save()
     return chart
 
-def delete_user_data():
-    del_chart = Chart.objects.filter(username=lastfm_username)
-    del_chart.delete()
-    del_chart.save()
-    return del_chart.ojects.all()
+
 
 
 

@@ -26,7 +26,7 @@ lastfm_network = pylast.LastFMNetwork(
 date = round(datetime.datetime.today().timestamp())
 past_date = datetime.datetime.today() - timedelta(days=365)
 past_date = round(past_date.timestamp())
-cur_user = int(LastFmProfile.objects.get(user=User))
+#cur_user = int(LastFmProfile.objects.get(user=User))
 
 def get_lastfm_data():
     top_list = lastfm_network.get_user(lastfm_username).get_recent_tracks(time_from=past_date, time_to=date, limit=None)

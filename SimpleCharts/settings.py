@@ -3,12 +3,12 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import dj_database_url
+from django.urls import reverse_lazy
 
-
-
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_DIR = BASE_DIR / "charts"
-PROJECT_TEMPLATES_DIR = PROJECT_DIR / "templates"
+PROJECT_TEMPLATES_DIR = BASE_DIR /"SimpleCharts"/ "maintemplates"
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -19,7 +19,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -32,6 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "corsheaders",
     "charts",
+    "SimpleCharts",
+
 ]
 
 MIDDLEWARE = [
@@ -69,15 +70,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SimpleCharts.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 DATABASE_URL = os.getenv('DATABASE_URL') or "sqlite://db.sqlite3"
 assert DATABASE_URL, "no DATABASE_URL provided"
 DATABASES = {
     "default": dj_database_url.parse(DATABASE_URL),
-    }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -97,7 +96,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -110,7 +108,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -137,4 +134,5 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 
-
+LOGIN_REDIRECT_URL = reverse_lazy("charts")
+LOGOUT_REDIRECT_URL = reverse_lazy("start/charts/")

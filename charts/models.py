@@ -1,7 +1,7 @@
 from django.utils import timezone
-
 from django.contrib.auth import get_user_model
 from django.db import models
+
 
 
 User = get_user_model()
@@ -14,7 +14,7 @@ class LastFmProfile(models.Model):
         on_delete=models.CASCADE,
         primary_key=True,
     )
-    username = models.TextField
+    username = models.TextField(default="user")
     password = models.TextField()
 
     def __repr__(self):
@@ -22,12 +22,13 @@ class LastFmProfile(models.Model):
 
 class Chart(models.Model):
     objects = models.Manager()
-    username = models.TextField(default='username',blank=True)
+    username = models.TextField(blank = True, default= 'username' )
     artist = models.TextField(blank = True, default= 'artist' )
     song_title = models.TextField(default="song")
     album = models.TextField(default="album", blank=True, null=True)
     date = models.TextField(default= 'date')
     date_utc = models.DateField(default=timezone.now)
+    user = models.ForeignKey(LastFmProfile ,on_delete=models.CASCADE, default = 0)
 
     def __repr__(self):
         return f"{self.__class__.__name__}(username = {self.username}, artist = {self.artist}," \

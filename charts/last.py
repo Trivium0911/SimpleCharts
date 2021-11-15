@@ -11,8 +11,7 @@ datetime.datetime.now(tz=timezone.utc)
 
 # LAST_FM_SETTINGS
 User= get_user_model()
-for i in User:
-    print (i)
+
 lastfm_username = os.getenv("lastfm_username")
 lastfm_password_hash = pylast.md5(os.getenv("lastfm_password_hash"))
 API_KEY = os.getenv('API_KEY')

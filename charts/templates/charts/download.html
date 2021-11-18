@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<head>
+<meta http-equiv="refresh" content="1;{{ charts }}" />
+</head>
 <body>
             <form action="" method="POST">
                 {% csrf_token %}
-                {{ download.download_user_db }}
+                {{ download.clear_user_db }}
+                {{ download_user_db }}
                 <button type="submit" class="btn btn-primary"> Download
                     {% if download.download_user_db %}
                     <label for="{{ download.download_user_db }}"> progress:</label>

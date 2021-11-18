@@ -2,24 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+     <style>
+   a {
+    text-decoration: none;
+   }
+  </style>
     <title>Title</title>
 </head>
 <body>
 
     Hello, {{ user }} !
+    Status :
     {% if last_date %}
     Your last entry in the database on {{ last_date }}
     {% else %}
-    You haven't any charts
+    No Charts. Please update your database or check account name.
     {% endif %}
 
 
+
+
+            </form>
  <form  action = "{% url 'logout' %}">
                 <button> LOG OUT </button>
         </form>
 
  <form  action ="download/" >
-                <button> download db </button>
+                <button> Update database </button>
         </form>
  <form  action ="delete/">
                 <button> del db </button>
@@ -30,7 +39,8 @@
             <tr><th>ARTIST</th><th>SONG</th><th>ALBUM</th><th>DATE</th></tr>
        {% for list in userchart %}
 
-    <tr><td>{{ list.artist }}</td><td>{{ list.song_title }}</td><td>{{ list.album }}</td><td>{{ list.date }}</td><td></tr>
+    <tr><td><a href="https://www.last.fm/music/{{ list.artist }}">{{ list.artist }}</a></td>
+        <td>{{ list.song_title }}</td><td>{{ list.album }}</td><td>{{ list.date }}</td></tr>
         {% empty %}
      Sorry, no charts for you. Please, download base from last.fm
         {% endfor %}

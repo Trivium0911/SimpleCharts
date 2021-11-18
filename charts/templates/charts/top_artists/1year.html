@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+   a {
+    text-decoration: none;
+   }
+  </style>
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+<tr><th>ARTIST</th><th>COUNT</th>
+        {% for list in top_user_artists %}
+      <tr><td><a href="https://www.last.fm/music/{{ list.artist }}">{{ list.artist }}</a></td>
+      <td>{{ list.count}}</td></tr>
+         {% empty %}
+     Sorry, no charts for you. Please, download base from last.fm
+        {% endfor %}
+</table>
+</body>
+</html>

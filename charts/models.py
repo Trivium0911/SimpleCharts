@@ -28,7 +28,7 @@ class Chart(models.Model):
     album = models.TextField(default="album", blank=True, null=True)
     date = models.TextField(default= 'date')
     date_utc = models.DateField(default=timezone.now)
-    user = models.ForeignKey(LastFmProfile ,on_delete=models.CASCADE, default = 0)
+
 
     def __repr__(self):
         return f"{self.__class__.__name__}(username = {self.username}, artist = {self.artist}," \

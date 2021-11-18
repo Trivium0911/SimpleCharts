@@ -6,10 +6,17 @@
 </head>
 <body>
 
-    Hello, {{ object_list.0.get_username }}
-    Your last entry in the database on {{ list.date.0 }}
+    Hello, {{ user }} !
+    {% if last_date %}
+    Your last entry in the database on {{ last_date }}
+    {% else %}
+    You haven't any charts
+    {% endif %}
 
 
+ <form  action = "{% url 'logout' %}">
+                <button> LOG OUT </button>
+        </form>
 
  <form  action ="download/" >
                 <button> download db </button>
@@ -19,13 +26,15 @@
         </form>
     <form >
 <table border="1">
+
             <tr><th>ARTIST</th><th>SONG</th><th>ALBUM</th><th>DATE</th></tr>
-       {% for list in object_list %}
+       {% for list in userchart %}
 
     <tr><td>{{ list.artist }}</td><td>{{ list.song_title }}</td><td>{{ list.album }}</td><td>{{ list.date }}</td><td></tr>
         {% empty %}
      Sorry, no charts for you. Please, download base from last.fm
         {% endfor %}
+
 </table>
 </form>
 </body>

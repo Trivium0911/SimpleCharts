@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "charts",
     "SimpleCharts",
 
+
 ]
 
 MIDDLEWARE = [
@@ -47,7 +48,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+MIDDLEWARE_CLASSES = (
 
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+)
 ROOT_URLCONF = 'SimpleCharts.urls'
 
 TEMPLATES = [
@@ -135,4 +140,4 @@ CORS_ALLOW_HEADERS = [
 ]
 
 LOGIN_REDIRECT_URL = reverse_lazy("charts")
-LOGOUT_REDIRECT_URL = reverse_lazy("start/charts/")
+LOGOUT_REDIRECT_URL = reverse_lazy('simplecharts')

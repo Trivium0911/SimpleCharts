@@ -53,7 +53,8 @@ def top_artists_year(request):
 def top_tracks_year(request):
     cur_user = get_user(request)
     user_chart = chart.filter(username = cur_user)
-    return render(request,"charts/top_tracks/tracks_year.html",{"userchart": user_chart})
+    top_user_tracks = user_chart.values('artist', 'album','song_title').annotate(count=Count('song_title')).order_by("-count")
+    return render(request,"charts/top_tracks/tracks_year.html",{"top_user_tracks": top_user_tracks})
 
 def top_albums_year(request):
     cur_user = get_user(request)

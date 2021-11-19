@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
      <style>
-   a {
-    text-decoration: none;
-
-   }
-   a:hover {
-
-}
-  </style>
-    <title>Title</title>
+    a {
+        text-decoration: none;
+     }
+    </style>
+        <title>Title</title>
 </head>
 <body>
 
@@ -26,27 +22,23 @@
 
 
 
-            </form>
- <form  action = "{% url 'logout' %}">
-                <button> LOG OUT </button>
-        </form>
 
- <form  action ="download" >
-                <button> Update database </button>
-        </form>
- <form  action ="delete">
-                <button> del db </button>
-        </form>
+ <form action = "{% url 'logout' %}"><button> LOG OUT </button></form>
+
+ <form action ="download" ><button> UPDATE DATABASE </button></form>
+ <form action ="delete"><button> CLEAR DATABASE </button></form>
 
 <table border="1">
 
-            <tr><th>TOP TRACKS</th><th>TOP ARTISTS</th><th>TOP ALBUMS</th>
-
-
     <tr>
-    <td> <form  action ="tracks_year"> <button> 1 YEAR  </button> </form> </td>
-    <td> <form  action ="artists_year"> <button> 1 YEAR  </button> </form></td>
-    <td> <form  action ="albums_year">  <button> 1 YEAR  </button> </form></td>
+        <th>TOP TRACKS</th>
+        <th>TOP ARTISTS</th>
+        <th>TOP ALBUMS</th>
+    <tr>
+
+        <td> <form action ="tracks_year"> <button> 1 YEAR  </button> </form> </td>
+        <td> <form action ="artists_year"> <button> 1 YEAR  </button> </form></td>
+        <td> <form action ="albums_year">  <button> 1 YEAR  </button> </form></td>
     </tr>
 
 

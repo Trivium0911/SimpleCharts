@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
- <form  action = "{% url 'charts' %}">
-    <button> BACK  </button> </form>
+
 <body>
+    <form action = "{% url 'charts' %}"><button> BACK </button> </form>
+    <table border="1">
+        <tr>
+            <th>PLACE</th>
+            <th>ARTIST</th>
+            <th>SONG</th>
+            <th>ALBUM</th>
+            <th>COUNT</th>
+        </tr>
+    {% for list in top_user_tracks %}
 
-<table border="1">
+    <tr>
+        <td>{{ forloop.counter  }}</td>
+        <td><a href="https://www.last.fm/music/{{ list.artist }}">{{ list.artist }}</a></td>
+        <td>{{ list.song_title }}</td>
+        <td>{{ list.album }}</td>
+        <td>{{ list.count }}</td>
 
-            <tr><th>ARTIST</th><th>SONG</th><th>ALBUM</th><th>DATE</th></tr>
-       {% for list in userchart %}
-
-    <tr><td><a href="https://www.last.fm/music/{{ list.artist }}">{{ list.artist }}</a></td>
-        <td>{{ list.song_title }}</td><td>{{ list.album }}</td><td>{{ list.date }}</td></tr>
-        {% empty %}
-     Sorry, no charts for you. Please, download base from last.fm
-        {% endfor %}
+    </tr>
+    {% empty %}
+        Sorry, no charts for you. Please, download base from Last.fm
+    {% endfor %}
 
 </table>
 

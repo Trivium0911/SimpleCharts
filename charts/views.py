@@ -44,8 +44,19 @@ def delete_user_db(request):
 
 
 
-def top_artists(request):
+def top_artists_year(request):
     cur_user = get_user(request)
     user_artists = chart.filter(username = cur_user)
     top_user_artists = user_artists.values('artist').annotate(count=Count('artist')).order_by("-count")
-    return render(request,"charts/top_artists/1year.html",{"top_user_artists" : top_user_artists})
+    return render(request,"charts/top_artists/artists_year.html",{"top_user_artists" : top_user_artists})
+
+def top_tracks_year(request):
+    cur_user = get_user(request)
+    user_chart = chart.filter(username = cur_user)
+    return render(request,"charts/top_tracks/tracks_year.html",{"userchart": user_chart})
+
+def top_albums_year(request):
+    cur_user = get_user(request)
+    user_albums = chart.filter(username = cur_user)
+    top_user_albums = user_albums.values('artist', 'album').annotate(count=Count('album')).order_by("-count")
+    return render(request,"charts/top_albums/albums_year.html",{"top_user_albums" : top_user_albums})

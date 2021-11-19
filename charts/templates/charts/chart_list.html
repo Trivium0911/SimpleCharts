@@ -5,7 +5,11 @@
      <style>
    a {
     text-decoration: none;
+
    }
+   a:hover {
+
+}
   </style>
     <title>Title</title>
 </head>
@@ -27,25 +31,27 @@
                 <button> LOG OUT </button>
         </form>
 
- <form  action ="download/" >
+ <form  action ="download" >
                 <button> Update database </button>
         </form>
- <form  action ="delete/">
+ <form  action ="delete">
                 <button> del db </button>
         </form>
-    <form >
+
 <table border="1">
 
-            <tr><th>ARTIST</th><th>SONG</th><th>ALBUM</th><th>DATE</th></tr>
-       {% for list in userchart %}
+            <tr><th>TOP TRACKS</th><th>TOP ARTISTS</th><th>TOP ALBUMS</th>
 
-    <tr><td><a href="https://www.last.fm/music/{{ list.artist }}">{{ list.artist }}</a></td>
-        <td>{{ list.song_title }}</td><td>{{ list.album }}</td><td>{{ list.date }}</td></tr>
-        {% empty %}
-     Sorry, no charts for you. Please, download base from last.fm
-        {% endfor %}
+
+    <tr>
+    <td> <form  action ="tracks_year"> <button> 1 YEAR  </button> </form> </td>
+    <td> <form  action ="artists_year"> <button> 1 YEAR  </button> </form></td>
+    <td> <form  action ="albums_year">  <button> 1 YEAR  </button> </form></td>
+    </tr>
+
 
 </table>
-</form>
+
+
 </body>
 </html>

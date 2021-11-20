@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <style>
-   a {
-    text-decoration: none;
-   }
-  </style>
     <title>Title</title>
-     <style>
+    <style>
+      a {
+        text-decoration: none;
+     }
    table {
     width: 300px;
     border: 1px solid green;
@@ -23,21 +21,29 @@
 
 <body>
     <form action = "{% url 'charts' %}"><button> BACK </button> </form>
-<table border="1">
-    <tr>
-        <th>PLACE</th>
-        <th>ARTIST</th>
-        <th>COUNT</th>
-    </tr>
-    {% for list in top_artists_year %}
+    <table border="1">
+        <tr>
+            <th>PLACE</th>
+            <th>ARTIST</th>
+            <th>SONG</th>
+            <th>ALBUM</th>
+            <th>COUNT</th>
+        </tr>
+    {% for list in top_tracks_week %}
+
     <tr>
         <td>{{ forloop.counter }}</td>
         <td><a href="https://www.last.fm/music/{{ list.artist }}">{{ list.artist }}</a></td>
-        <td>{{ list.count}}</td>
+        <td>{{ list.song_title }}</td>
+        <td>{{ list.album }}</td>
+        <td>{{ list.count }}</td>
+
     </tr>
     {% empty %}
         Sorry, no charts for you. Please, download base from Last.fm
     {% endfor %}
+
 </table>
+
 </body>
 </html>

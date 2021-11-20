@@ -2,12 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <style>
-    a {
+
+        <title>Title</title>
+      <style>
+      a {
         text-decoration: none;
      }
-    </style>
-        <title>Title</title>
+   table {
+    width: 300px;
+    border: 1px solid green;
+    margin: auto;
+   }
+   td {
+    height: 50px;
+    text-align: center;
+    }
+  </style>
+
 </head>
 <body>
 
@@ -34,8 +45,28 @@
         <th>TOP TRACKS</th>
         <th>TOP ARTISTS</th>
         <th>TOP ALBUMS</th>
+    </tr>
     <tr>
-
+        <td> <form action ="tracks_week"> <button> WEEK  </button> </form> </td>
+        <td> <form action ="artists_week"> <button> WEEK </button> </form></td>
+        <td> <form action ="albums_week">  <button> WEEK </button> </form></td>
+    </tr>
+    <tr>
+        <td> <form action ="tracks_month"> <button>  MONTH  </button> </form> </td>
+        <td> <form action ="artists_month"> <button>  MONTH </button> </form></td>
+        <td> <form action ="albums_month">  <button>  MONTH </button> </form></td>
+    </tr>
+    <tr>
+        <td> <form action ="tracks_3month"> <button> 3 MONTH  </button> </form> </td>
+        <td> <form action ="artists_3month"> <button> 3 MONTH </button> </form></td>
+        <td> <form action ="albums_3month">  <button> 3 MONTH </button> </form></td>
+    </tr>
+    <tr>
+        <td> <form action ="tracks_6month"> <button> 6 MONTH  </button> </form> </td>
+        <td> <form action ="artists_6month"> <button> 6 MONTH </button> </form></td>
+        <td> <form action ="albums_6month">  <button> 6 MONTH </button> </form></td>
+    </tr>
+    <tr>
         <td> <form action ="tracks_year"> <button> 1 YEAR  </button> </form> </td>
         <td> <form action ="artists_year"> <button> 1 YEAR  </button> </form></td>
         <td> <form action ="albums_year">  <button> 1 YEAR  </button> </form></td>

@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+      a {
+        text-decoration: none;
+     }
+   table {
+    width: 300px;
+    border: 1px solid green;
+    margin: auto;
+   }
+   td {
+    height: 50px;
+    text-align: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -15,10 +29,10 @@
             <th>ALBUM</th>
             <th>COUNT</th>
         </tr>
-    {% for list in top_user_tracks %}
+    {% for list in top_tracks_year %}
 
     <tr>
-        <td>{{ forloop.counter  }}</td>
+        <td>{{ forloop.counter }}</td>
         <td><a href="https://www.last.fm/music/{{ list.artist }}">{{ list.artist }}</a></td>
         <td>{{ list.song_title }}</td>
         <td>{{ list.album }}</td>

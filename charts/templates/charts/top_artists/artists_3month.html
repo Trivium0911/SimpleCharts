@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
     <style>
+   a {
+    text-decoration: none;
+   }
+  </style>
+    <title>Title</title>
+     <style>
    table {
-    height: 150px;
     width: 300px;
     border: 1px solid green;
     margin: auto;
@@ -13,7 +17,7 @@
    td {
     height: 50px;
     text-align: center;
-   }
+    }
   </style>
 </head>
 
@@ -23,15 +27,13 @@
     <tr>
         <th>PLACE</th>
         <th>ARTIST</th>
-        <th>ALBUM</th>
         <th>COUNT</th>
     </tr>
-    {% for list in top_albums_year %}
+    {% for list in top_artists_3month %}
     <tr>
-      <td>{{ forloop.counter }}</td>
-      <td><a href="https://www.last.fm/music/{{ list.artist }}"> {{ list.artist }}</a></td>
-      <td>{{ list.album }}</td>
-      <td>{{ list.count }}</td>
+        <td>{{ forloop.counter }}</td>
+        <td><a href="https://www.last.fm/music/{{ list.artist }}">{{ list.artist }}</a></td>
+        <td>{{ list.count}}</td>
     </tr>
     {% empty %}
         Sorry, no charts for you. Please, download base from Last.fm

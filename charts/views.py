@@ -79,13 +79,13 @@ def top_artists_month(request):
     cur_user = get_user(request)
     period = 30
     top_artists_month = get_top_artists(cur_user,period)
-    return render(request,"charts/top_artists/artists_3month.html",{"top_artists_month" : top_artists_month})
+    return render(request,"charts/top_artists/artists_month.html",{"top_artists_month" : top_artists_month})
 
 def top_artists_week(request):
     cur_user = get_user(request)
     period = 7
     top_artists_week = get_top_artists(cur_user,period)
-    return render(request,"charts/top_artists/artists_3month.html",{"top_artists_week" : top_artists_week})
+    return render(request,"charts/top_artists/artists_week.html",{"top_artists_week" : top_artists_week})
 
 def top_albums_6month(request):
     cur_user = get_user(request)

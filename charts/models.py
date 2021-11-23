@@ -6,20 +6,6 @@ from django.db import models
 
 User = get_user_model()
 
-
-class LastFmProfile(models.Model):
-    objects = models.Manager()
-    user = models.OneToOneField(
-        User,
-        on_delete=models.CASCADE,
-        primary_key=True,
-    )
-    username = models.TextField(default="user")
-    password = models.TextField()
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}(username = {self.username}, password= {self.password} (user = {self.user})"
-
 class Chart(models.Model):
     objects = models.Manager()
     username = models.TextField(blank = True, default= 'username' )

@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<head>
-<meta http-equiv="refresh" content="1;{{ charts }}" />
-</head> The download may take several minutes. Please wait for a redirect.
-<body>
+{% extends 'charts/charts.html' %}
+
+
+{% block content %}
+
+          <p> Download may take a few minutes. Please wait for redirect. </p>
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ download.clear_user_db }}
                 {{ download_user_db }}
-                <button type="submit" class="btn btn-primary"> Download
+                <button type="submit", class="btn btn-secondary"> Download
                     {% if download.download_user_db %}
                     <label for="{{ download.download_user_db }}"> progress:</label>
 
@@ -22,9 +18,14 @@
 
             </form>
 
+<script>
+    document.querySelector('.btn').addEventListener('click',e => {
+        e.target.innerText == 'Download' ? e.target.innerText = 'Downloading. Wait' : e.target.innerText = 'Download';
+        e.target.classList.toggle('loading');
+    });
+</script>
 
     <form  action = "{% url 'charts' %}">
-    <button> BACK  </button> </form>
+    <button class="btn btn-secondary"> BACK </button> </form>
 
-</body>
-</html>
+{% endblock %}

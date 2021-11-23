@@ -1,8 +1,10 @@
 import os
+import time
 import pylast
-from datetime import timedelta
+from datetime import timedelta,datetime
 from django.contrib.auth import get_user_model
 import datetime
+from django.core.paginator import Paginator
 from django.db.models import Count
 from charts.models import Chart
 
@@ -24,6 +26,12 @@ date = round(datetime.datetime.now().timestamp())
 past_date = datetime.datetime.today() - timedelta(days=365)
 past_date = round(past_date.timestamp())
 
+def pagination(request,top):
+    paginator = Paginator(top, 100)
+    page_number = request.GET.get('page')
+    obj = paginator.get_page(page_number)
+    return obj
+
 def datefilter(cur_user,period):
     user_charts = chart.filter(username=cur_user)
     if not user_charts:
@@ -36,10 +44,6 @@ def datefilter(cur_user,period):
 def get_user(request):
     user = request.user
     return user
-
-def chart_filter(cur_user):
-    filter = chart.filter(username= cur_user)
-    return filter
 
 def clear_user_db(cur_user):
     del_chart = chart.filter(username=cur_user)
@@ -74,8 +78,11 @@ def pack_to_db(cur_user):
         username=cur_user,
     )
     top_list = lastfm_network.get_user(cur_user).get_recent_tracks(time_from=past_date, time_to=date, limit=None)
-    if not top_list:
-        return None
+    if top_list == []:
+        new_date = int(lastfm_network.get_user(cur_user).get_recent_tracks(limit=1)[0][3])
+        new_past_date = str(datetime.date.fromtimestamp(new_date) - timedelta(days=365))
+        new_past_date = int(time.mktime(time.strptime(new_past_date, '%Y-%m-%d')))
+        top_list = lastfm_network.get_user(cur_user).get_recent_tracks(time_from=new_past_date, time_to=new_date, limit=None)
     for top_item in top_list:
         date_utc = datetime.date.fromtimestamp(int(top_item.timestamp))
         chart = Chart(

@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'charts/charts.html' %}
 
+
+{% block content %}
+       <h2> SIMPLE CHARTS </h2>
     <p><form  action = "{% url 'login' %}">
-                <button> LOG IN </button>
+                <button class="btn btn-secondary"> LOG IN </button>
     </form></p>
     <p><form  action = "{% url 'signup' %}">
-                <button> SIGN UP </button>
+                <button class="btn btn-secondary"> SIGN UP </button>
     </form></p>
-</body>
-</html>
+{% endblock %}}+

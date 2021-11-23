@@ -1,45 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'charts/charts.html' %}
+{% block title %}
 
-        <title>Title</title>
-      <style>
-      a {
-        text-decoration: none;
-     }
-   table {
-    width: 300px;
-    border: 1px solid green;
-    margin: auto;
-   }
-   td {
-    height: 50px;
-    text-align: center;
-    }
-  </style>
+{% endblock %}
 
-</head>
-<body>
-
-    Hello, {{ user }} !
-    Status :
+{% block content %}
+    <h2> Hello, {{ user }} ! <form action = "{% url 'logout' %}"><button class="btn btn-secondary"> LOG OUT </button></form> </p>
+    <h2>Status :
     {% if last_date %}
     Your last entry in the database on {{ last_date }}
     {% else %}
     No Charts. Please update your database or check account name.
-    {% endif %}
+    {% endif %}</h2>
 
 
-
-
-
- <form action = "{% url 'logout' %}"><button> LOG OUT </button></form>
-
- <form action ="download" ><button> UPDATE DATABASE </button></form>
- <form action ="delete"><button> CLEAR DATABASE </button></form>
-
-<table border="1">
+ <form action ="download" ><button class="btn btn-secondary"> UPDATE DATABASE </button></form>
+ <form action ="delete"><button class="btn btn-secondary"> CLEAR DATABASE </button></form>
+<form action ="last_listened"><button class="btn btn-secondary"> LAST LISTENED </button></form>
+<table class="table table-hover", border="1">
 
     <tr>
         <th>TOP TRACKS</th>
@@ -47,34 +24,33 @@
         <th>TOP ALBUMS</th>
     </tr>
     <tr>
-        <td> <form action ="tracks_week"> <button> WEEK  </button> </form> </td>
-        <td> <form action ="artists_week"> <button> WEEK </button> </form></td>
-        <td> <form action ="albums_week">  <button> WEEK </button> </form></td>
+        <td> <form action ="tracks_week"> <button class="btn btn-secondary"> WEEK  </button> </form> </td>
+        <td> <form action ="artists_week"> <button class="btn btn-secondary"> WEEK </button> </form></td>
+        <td> <form action ="albums_week">  <button class="btn btn-secondary"> WEEK </button> </form></td>
     </tr>
     <tr>
-        <td> <form action ="tracks_month"> <button>  MONTH  </button> </form> </td>
-        <td> <form action ="artists_month"> <button>  MONTH </button> </form></td>
-        <td> <form action ="albums_month">  <button>  MONTH </button> </form></td>
+        <td> <form action ="tracks_month"> <button class="btn btn-secondary">  MONTH  </button> </form> </td>
+        <td> <form action ="artists_month"> <button class="btn btn-secondary">  MONTH </button> </form></td>
+        <td> <form action ="albums_month">  <button class="btn btn-secondary">  MONTH </button> </form></td>
     </tr>
     <tr>
-        <td> <form action ="tracks_3month"> <button> 3 MONTH  </button> </form> </td>
-        <td> <form action ="artists_3month"> <button> 3 MONTH </button> </form></td>
-        <td> <form action ="albums_3month">  <button> 3 MONTH </button> </form></td>
+        <td> <form action ="tracks_3month"> <button class="btn btn-secondary"> 3 MONTH  </button> </form> </td>
+        <td> <form action ="artists_3month"> <button class="btn btn-secondary"> 3 MONTH </button> </form></td>
+        <td> <form action ="albums_3month">  <button class="btn btn-secondary"> 3 MONTH </button> </form></td>
     </tr>
     <tr>
-        <td> <form action ="tracks_6month"> <button> 6 MONTH  </button> </form> </td>
-        <td> <form action ="artists_6month"> <button> 6 MONTH </button> </form></td>
-        <td> <form action ="albums_6month">  <button> 6 MONTH </button> </form></td>
+        <td> <form action ="tracks_6month"> <button class="btn btn-secondary"> 6 MONTH  </button> </form> </td>
+        <td> <form action ="artists_6month"> <button class="btn btn-secondary"> 6 MONTH </button> </form></td>
+        <td> <form action ="albums_6month">  <button class="btn btn-secondary"> 6 MONTH </button> </form></td>
     </tr>
     <tr>
-        <td> <form action ="tracks_year"> <button> 1 YEAR  </button> </form> </td>
-        <td> <form action ="artists_year"> <button> 1 YEAR  </button> </form></td>
-        <td> <form action ="albums_year">  <button> 1 YEAR  </button> </form></td>
+        <td> <form action ="tracks_year"> <button class="btn btn-secondary"> 1 YEAR  </button> </form> </td>
+        <td> <form action ="artists_year"> <button class="btn btn-secondary"> 1 YEAR  </button> </form></td>
+        <td> <form action ="albums_year">  <button class="btn btn-secondary"> 1 YEAR  </button> </form></td>
     </tr>
 
 
 </table>
 
 
-</body>
-</html>
+{% endblock %}}

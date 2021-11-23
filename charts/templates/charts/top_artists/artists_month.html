@@ -1,43 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <style>
-   a {
-    text-decoration: none;
-   }
-  </style>
-    <title>Title</title>
-     <style>
-   table {
-    width: 300px;
-    border: 1px solid green;
-    margin: auto;
-   }
-   td {
-    height: 50px;
-    text-align: center;
-    }
-  </style>
-</head>
+{% extends 'charts/charts.html' %}
 
-<body>
-    <form action = "{% url 'charts' %}"><button> BACK </button> </form>
-<table border="1">
+
+{% block content %}
+       <h2> TOP ARTIST FOR 1 MONTH </h2>
+
+     <form action = "{% url 'charts' %}"><button class="btn btn-secondary"> BACK </button> </form>
+
+    <ul class = 'pages'>
+ {% for p in pages_artists_month.paginator.page_range %}
+        <li>
+            <a href="?page={{ p }}">{{ p }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<table class="table table-hover", border="1">
     <tr>
         <th>PLACE</th>
         <th>ARTIST</th>
         <th>COUNT</th>
     </tr>
-    {% for list in top_artists_month %}
+
+    {% for list in pages_artists_month %}
     <tr>
-        <td>{{ forloop.counter }}</td>
-        <td><a href="https://www.last.fm/music/{{ list.artist }}">{{ list.artist }}</a></td>
-        <td>{{ list.count}}</td>
+        <td>{{ forloop.counter0|add:pages_artists_month.start_index }}</td>
+        <td><a href="https://www.last.fm/music/{{ list.artist }}"target="_blank">{{ list.artist }}</a></td>
+        <td>{{ list.count }}</td>
     </tr>
     {% empty %}
-        Sorry, no charts for you. Please, download base from Last.fm
+        <p> Sorry, no charts for you. Please, download base from Last.fm </p>
     {% endfor %}
+
+
+
+
+
 </table>
-</body>
-</html>
+<ul class = 'pages'>
+ {% for p in pages_artists_month.paginator.page_range %}
+        <li>
+            <a href="?page={{ p }}">{{ p }}</a>
+        </li>
+    {% endfor %}
+</ul>
+ <form action = "{% url 'charts' %}"><button class="btn btn-secondary"> BACK </button> </form>
+{% endblock %}

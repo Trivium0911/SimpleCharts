@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'charts/charts.html' %}
+
+
+{% block content %}
 
     <form method="post" >
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">{{ action|default:"LOG IN" }}</button>
+    <button type="submit", class="btn btn-secondary">{{ action|default:"LOG IN" }}</button>
     </form>
-<form action = "{% url 'simplecharts' %}"><button> BACK </button> </form>
-</body>
-</html>
+
+<form action = "{% url 'simplecharts' %}"><button class="btn btn-secondary"> BACK </button> </form>
+{% endblock %}

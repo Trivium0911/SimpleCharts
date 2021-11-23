@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import Chart,LastFmProfile
-
-
+from .models import Chart
 
 admin.site.register(Chart)
-admin.site.register(LastFmProfile)
+

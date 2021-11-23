@@ -1,5 +1,5 @@
 from django.urls import path
-from charts.views import chart_list
+from charts.views import chart_list, last_listened
 from charts.views import top_artists_year, top_artists_6month, top_artists_3month, top_artists_month, top_artists_week
 from charts.views import top_albums_year, top_albums_6month, top_albums_3month, top_albums_month, top_albums_week
 from charts.views import top_tracks_year, top_tracks_6month, top_tracks_3month, top_tracks_month, top_tracks_week
@@ -26,5 +26,6 @@ urlpatterns = [
     path("tracks_3month", top_tracks_3month, name="tracks_3month"),
     path("tracks_month", top_tracks_month, name="tracks_month"),
     path("tracks_week", top_tracks_week, name="tracks_week"),
+    path("last_listened", last_listened, name="last_listened"),
 
 ]

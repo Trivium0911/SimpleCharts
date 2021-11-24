@@ -76,9 +76,6 @@ DATABASE_URL = os.getenv('DATABASE_URL') or "sqlite://db.sqlite3"
 assert DATABASE_URL, "no DATABASE_URL provided"
 DATABASES = {
     "default": {"ENGINE" : dj_database_url.parse(DATABASE_URL),
-    'OPTIONS': {
-        'connect_timeout': 7,
-    }
 
 }
 }

@@ -14,7 +14,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG =os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ["simplechartsgrads.herokuapp.com"]
+ALLOWED_HOSTS = ["simplechartsgrads.herokuapp.com",]
 
 
 
@@ -71,16 +71,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SimpleCharts.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
 DATABASE_URL = os.getenv('DATABASE_URL') or "sqlite://db.sqlite3"
 assert DATABASE_URL, "no DATABASE_URL provided"
 DATABASES = {
     "default": dj_database_url.parse(DATABASE_URL),
+    'OPTIONS': {
+        'connect_timeout': 7,
+    }
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {

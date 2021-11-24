@@ -75,12 +75,13 @@ WSGI_APPLICATION = 'SimpleCharts.wsgi.application'
 DATABASE_URL = os.getenv('DATABASE_URL') or "sqlite://db.sqlite3"
 assert DATABASE_URL, "no DATABASE_URL provided"
 DATABASES = {
-    "default": dj_database_url.parse(DATABASE_URL),
-    'OPTIONS': {
+    "default": {"ENGINE" : dj_database_url.parse(DATABASE_URL),
+        'OPTIONS': {
         'connect_timeout': 7,
     }
-}
 
+}
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {

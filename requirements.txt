@@ -16,5 +16,4 @@ django_extensions
 whitenoise
 pylast
 datetime
-os
 time

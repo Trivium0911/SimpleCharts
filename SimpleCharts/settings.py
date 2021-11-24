@@ -1,7 +1,5 @@
 import os
 from pathlib import Path
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 import dj_database_url
 from django.urls import reverse_lazy
 
@@ -9,14 +7,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_DIR = BASE_DIR / "charts"
 PROJECT_TEMPLATES_DIR = BASE_DIR /"SimpleCharts"/ "maintemplates"
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+
+#
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =os.getenv("DEBUG")
 
 ALLOWED_HOSTS = []
 

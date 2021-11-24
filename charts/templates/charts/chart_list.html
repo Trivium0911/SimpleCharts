@@ -7,7 +7,7 @@
     <h2> Hello, {{ user }} ! <form action = "{% url 'logout' %}"><button class="btn btn-secondary"> LOG OUT </button></form> </p>
     <h2>Status :
     {% if last_date %}
-    Your last entry in the database on {{ last_date }}
+    Your last uploaded entry from {{ last_date }}.
     {% else %}
     No Charts. Please update your database or check account name.
     {% endif %}</h2>

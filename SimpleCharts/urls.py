@@ -7,7 +7,7 @@ from SimpleCharts.views import SignUpView, SimpleCharts
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('start/charts/', include("charts.urls"), name = "charts"),
-    path ("start/", SimpleCharts ,name='simplecharts'),
+    path ("start/", SimpleCharts , name='simplecharts'),
     path ("start/signup/", SignUpView.as_view(),name='signup'),
     path ("start/login/", LoginView.as_view(),name='login'),
     path ("logout/", LogoutView.as_view(), name='logout'),

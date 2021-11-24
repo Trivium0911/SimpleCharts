@@ -23,7 +23,7 @@ lastfm_network = pylast.LastFMNetwork(
 )
 
 date = round(datetime.datetime.now().timestamp())
-past_date = datetime.datetime.today() - timedelta(days=91)
+past_date = datetime.datetime.today() - timedelta(days=183)
 past_date = round(past_date.timestamp())
 
 def pagination(request,top):

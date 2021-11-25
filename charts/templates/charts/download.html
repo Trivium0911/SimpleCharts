@@ -4,7 +4,7 @@
 {% block content %}
 
 <p> Make sure you clear the database before downloading. </p>
-<p> You need to download 4 packs sequentially to download information for the year.</p>
+<p> You need to download 6 packs sequentially to download information for the year.</p>
 <p> Download may take a few minutes. </p>
 
             <form action="" method="POST">
@@ -12,28 +12,41 @@
                 {% csrf_token %}
                 {{ download_user_db }}
 
-                <button type="submit" name="btnform1" class="btn btn-secondary"> Download 1st pack (3 months) </button>
+                <button type="submit" name="btnform1" class="btn btn-secondary"> Download 1st pack (2 months) </button>
 
             </form>
 
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ download_user_db2 }}
-                <button type="submit" name="btnform2" class="btn btn-secondary"> Download 2nd pack (3 months) </button>
+                <button type="submit" name="btnform2" class="btn btn-secondary"> Download 2nd pack (2 months) </button>
 
             </form>
 
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ download_user_db3 }}
-                <button type="submit" name="btnform3" class="btn btn-secondary"> Download 3rd pack (3 months) </button>
+                <button type="submit" name="btnform3" class="btn btn-secondary"> Download 3rd pack (2 months) </button>
             </form>
 
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ download_user_db4 }}
-                <button type="submit" name="btnform4" class="btn btn-secondary"> Download 4th pack (3 months)  </button>
+                <button type="submit" name="btnform4" class="btn btn-secondary"> Download 4th pack (2 months)  </button>
             </form>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ download_user_db5 }}
+                <button type="submit" name="btnform5" class="btn btn-secondary"> Download 5th pack (2 months)  </button>
+            </form>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ download_user_db6 }}
+                <button type="submit" name="btnform6" class="btn btn-secondary"> Download 6th pack (2 months)  </button>
+            </form>
+
    <script>
 
     const buttons = document.querySelectorAll('form > button[type="submit"]');

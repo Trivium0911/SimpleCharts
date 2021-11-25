@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from pylast import PyLastError
 from charts.models import Chart
-from charts.last import pack_to_db, clear_user_db, get_user, pagination, pack_to_db4, pack_to_db3, pack_to_db2
+from charts.last import pack_to_db, clear_user_db, get_user, pagination, pack_to_db4, pack_to_db3, pack_to_db2, \
+    pack_to_db6, pack_to_db5
 from charts.last import get_top_artists, get_top_tracks, get_top_albums
 
 
@@ -33,6 +34,12 @@ def download_user_db(request):
             return render(request, "charts/download.html")
         if request.method == "POST" and 'btnform4' in request.POST:
             pack_to_db4(cur_user)
+            return render(request, "charts/download.html")
+        if request.method == "POST" and 'btnform5' in request.POST:
+            pack_to_db5(cur_user)
+            return render(request, "charts/download.html")
+        if request.method == "POST" and 'btnform6' in request.POST:
+            pack_to_db6(cur_user)
             return render(request, "charts/download.html")
     except PyLastError:
         return redirect("charts")

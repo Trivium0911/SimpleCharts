@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from pylast import PyLastError
 from charts.models import Chart
-from charts.last import pack_to_db, clear_user_db, get_user, pagination
+from charts.last import pack_to_db, clear_user_db, get_user, pagination, pack_to_db4, pack_to_db3, pack_to_db2
 from charts.last import get_top_artists, get_top_tracks, get_top_albums
 
 
@@ -16,20 +16,25 @@ def chart_list(request):
         return render(request, 'charts/chart_list.html', { "no_charts": "You haven't charts"})
     first_date = user_chart.first()
     last_date = getattr(first_date, "date")
-    return render(request, 'charts/chart_list.html', {"userchart": user_chart, "last_date": last_date })
+    return render(request, 'charts/chart_list.html', { "last_date": last_date })
 
 
 def download_user_db(request):
-    if request.method == "POST":
-        cur_user = get_user(request)
-        try:
-            clear_user_db(cur_user)
-        except AttributeError:
-            pass
-        try:
+    cur_user = get_user(request)
+    try:
+        if request.method == "POST" and 'btnform1' in request.POST:
             pack_to_db(cur_user)
-        except PyLastError:
-            return redirect("charts")
+            return render(request, "charts/download.html")
+        if request.method == "POST" and 'btnform2' in request.POST:
+            pack_to_db2(cur_user)
+            return render(request, "charts/download.html")
+        if request.method == "POST" and 'btnform3' in request.POST:
+            pack_to_db3(cur_user)
+            return render(request, "charts/download.html")
+        if request.method == "POST" and 'btnform4' in request.POST:
+            pack_to_db4(cur_user)
+            return render(request, "charts/download.html")
+    except PyLastError:
         return redirect("charts")
     return render(request, "charts/download.html")
 

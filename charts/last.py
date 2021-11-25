@@ -22,10 +22,16 @@ lastfm_network = pylast.LastFMNetwork(
     username = lastfm_username
 )
 
-date = round(datetime.datetime.now().timestamp())
-delta = timedelta(days=92)
-past_date = datetime.datetime.today() - delta
+date = round(datetime.datetime.today().timestamp())
+past_date = datetime.datetime.today() - timedelta(days=92)
+past_date2 = past_date - timedelta(days=92)
+past_date3 = past_date2 - timedelta(days=92)
+past_date4 = past_date3 - timedelta(days=92)
+year_date = past_date4
 past_date = round(past_date.timestamp())
+past_date2 = round( past_date2.timestamp())
+past_date3 = round(past_date3.timestamp())
+past_date4 = round( past_date4.timestamp())
 
 def pagination(request,top):
     paginator = Paginator(top, 100)
@@ -72,27 +78,70 @@ def get_top_albums(cur_user,period):
     top_user_albums = albums.values('artist', 'album').annotate(count=Count('album')).order_by("-count")
     return top_user_albums
 
+
 def pack_to_db(cur_user):
     lastfm_network = pylast.LastFMNetwork(
         api_key=API_KEY,
         api_secret=API_SECRET,
         username=cur_user,
     )
-    top_list = []
-    top_list1 = lastfm_network.get_user(cur_user).get_recent_tracks(time_from=past_date, time_to=date, limit=None)
-    top_list.append(top_list1)
-    top_list2 = lastfm_network.get_user(cur_user).get_recent_tracks(time_from=past_date - delta, time_to=past_date, limit=None)
-    top_list.append(top_list2)
+    top_list = lastfm_network.get_user(cur_user).get_recent_tracks(time_from = past_date, time_to=date, limit=None)
     if top_list == []:
         new_date = int(lastfm_network.get_user(cur_user).get_recent_tracks(limit=1)[0][3])
-        new_past_date = str(datetime.date.fromtimestamp(new_date) - timedelta(days=365))
+        new_past_date = str(datetime.date.fromtimestamp(new_date) - timedelta(days=92))
         new_past_date = int(time.mktime(time.strptime(new_past_date, '%Y-%m-%d')))
-        top_list = lastfm_network.get_user(cur_user).get_recent_tracks(time_from=new_past_date, time_to=new_date, limit=None)
-    for i in top_list:
-        for top_item in i:
+        top_list = lastfm_network.get_user(cur_user).get_recent_tracks(time_from=new_past_date, time_to=new_date,limit=None)
+    for top_item in top_list:
+        date_utc = datetime.date.fromtimestamp(int(top_item.timestamp))
+        chart = Chart(
+            username=cur_user,
+            artist=top_item.track.artist,
+            song_title=top_item.track.title,
+            album=top_item.album,
+            date=top_item.playback_date,
+            date_utc=date_utc,
+        )
+        chart.save()
+    return chart
+
+def pack_to_db2(cur_user):
+    lastfm_network = pylast.LastFMNetwork(
+        api_key=API_KEY,
+        api_secret=API_SECRET,
+        username=cur_user,
+    )
+    actual_date = chart.filter(username=cur_user)[0].date_utc
+    if actual_date > year_date.date():
+        top_list = lastfm_network.get_user(cur_user).get_recent_tracks(time_from=past_date2, time_to=past_date,limit=None)
+        for top_item in top_list:
             date_utc = datetime.date.fromtimestamp(int(top_item.timestamp))
-            chart = Chart(
-                username= cur_user,
+            chart2 = Chart(
+                username=cur_user,
+                artist=top_item.track.artist,
+                song_title=top_item.track.title,
+                album=top_item.album,
+                date=top_item.playback_date,
+                date_utc=date_utc,
+
+              )
+            chart2.save()
+        return chart2
+
+
+
+def pack_to_db3(cur_user):
+    lastfm_network = pylast.LastFMNetwork(
+        api_key=API_KEY,
+        api_secret=API_SECRET,
+        username=cur_user,
+    )
+    actual_date = chart.filter(username=cur_user)[0].date_utc
+    if actual_date > year_date.date():
+        top_list = lastfm_network.get_user(cur_user).get_recent_tracks(time_from=past_date3, time_to=past_date2, limit=None)
+        for top_item in top_list:
+            date_utc = datetime.date.fromtimestamp(int(top_item.timestamp))
+            chart3 = Chart(
+                username=cur_user,
                 artist=top_item.track.artist,
                 song_title=top_item.track.title,
                 album=top_item.album,
@@ -100,7 +149,29 @@ def pack_to_db(cur_user):
                 date_utc=date_utc,
 
             )
-            chart.save()
+            chart3.save()
+        return chart3
 
-    return chart
 
+def pack_to_db4(cur_user):
+    lastfm_network = pylast.LastFMNetwork(
+        api_key=API_KEY,
+        api_secret=API_SECRET,
+        username=cur_user,
+    )
+    actual_date = chart.filter(username=cur_user)[0].date_utc
+    if actual_date > year_date.date():
+        top_list = lastfm_network.get_user(cur_user).get_recent_tracks(time_from=past_date4, time_to=past_date3, limit=None)
+        for top_item in top_list:
+            date_utc = datetime.date.fromtimestamp(int(top_item.timestamp))
+            chart4 = Chart(
+                username=cur_user,
+                artist=top_item.track.artist,
+                song_title=top_item.track.title,
+                album=top_item.album,
+                date=top_item.playback_date,
+                date_utc=date_utc,
+
+            )
+            chart4.save()
+        return chart4

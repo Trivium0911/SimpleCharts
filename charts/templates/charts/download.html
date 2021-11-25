@@ -3,27 +3,45 @@
 
 {% block content %}
 
-          <p> Download may take a few minutes. Please wait for redirect. </p>
-            <form action="" method="POST">
-                {% csrf_token %}
-                {{ download.clear_user_db }}
-                {{ download_user_db }}
-                <button type="submit", class="btn btn-secondary"> Download
-                    {% if download.download_user_db %}
-                    <label for="{{ download.download_user_db }}"> progress:</label>
+<p> Make sure you clear the database before downloading. </p>
+<p> You need to download 4 packs sequentially to download information for the year.</p>
+<p> Download may take a few minutes. </p>
 
-                <progress id="{{ download.download_user_db }}" max="100" >  </progress>
-                    {% endif %}
-                </button>
+            <form action="" method="POST">
+
+                {% csrf_token %}
+                {{ download_user_db }}
+
+                <button type="submit" name="btnform1" class="btn btn-secondary"> Download 1st pack (3 months) </button>
 
             </form>
 
-<script>
-    document.querySelector('.btn').addEventListener('click',e => {
-        e.target.innerText == 'Download' ? e.target.innerText = 'Downloading. Wait' : e.target.innerText = 'Download';
-        e.target.classList.toggle('loading');
-    });
-</script>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ download_user_db2 }}
+                <button type="submit" name="btnform2" class="btn btn-secondary"> Download 2nd pack (3 months) </button>
+
+            </form>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ download_user_db3 }}
+                <button type="submit" name="btnform3" class="btn btn-secondary"> Download 3rd pack (3 months) </button>
+            </form>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ download_user_db4 }}
+                <button type="submit" name="btnform4" class="btn btn-secondary"> Download 4th pack (3 months)  </button>
+            </form>
+   <script>
+
+    const buttons = document.querySelectorAll('form > button[type="submit"]');
+buttons.forEach((btn) => {
+  btn.addEventListener('click', (e) => { e.target.innerText == 'Download ' ? e.target.innerText = 'Downloading. Wait' : e.target.innerText = 'Downloading. Wait';
+        e.target.classList.toggle('loading'); });
+});
+        </script>
 
     <form  action = "{% url 'charts' %}">
     <button class="btn btn-secondary"> BACK </button> </form>

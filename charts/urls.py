@@ -9,7 +9,10 @@ from charts.views import download_user_db, delete_user_db
 
 urlpatterns = [
     path("", chart_list, name="charts"),
-    path("download", download_user_db, name="download"),
+    path("download", download_user_db, name="download_user_db"),
+    #path("download", download_user_db2, name="download_user_db2"),
+    # path("download", download_user_db3, name="download_user_db3"),
+    # path("download", download_user_db4, name="download_user_db4"),
     path("delete", delete_user_db, name="delete"),
     path("artists_year",top_artists_year, name="top_artists_year"),
     path("tracks_year",top_tracks_year, name="tracks_year"),
@@ -27,5 +30,8 @@ urlpatterns = [
     path("tracks_month", top_tracks_month, name="tracks_month"),
     path("tracks_week", top_tracks_week, name="tracks_week"),
     path("last_listened", last_listened, name="last_listened"),
+
+  
+
 
 ]

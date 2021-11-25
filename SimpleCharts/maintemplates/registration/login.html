@@ -2,7 +2,7 @@
 
 
 {% block content %}
-
+<p>The account name must be the same as the last.fm username.</p>
     <form method="post" >
         {% csrf_token %}
         {{ form.as_p }}

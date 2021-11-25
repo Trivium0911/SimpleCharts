@@ -6,7 +6,7 @@
     <form method="post" >
         {% csrf_token %}
         {{ form.as_p }}
-    <button type="submit", class="btn btn-secondary">{{ action|default:"LOG IN" }}</button>
+    <button type="submit" class="btn btn-secondary">{{ action|default:"LOG IN" }}</button>
     </form>
 
 <form action = "{% url 'simplecharts' %}"><button class="btn btn-secondary"> BACK </button> </form>

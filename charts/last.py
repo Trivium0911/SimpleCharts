@@ -90,11 +90,15 @@ def pack_to_db(cur_user):
         username=cur_user,
     )
     top_list = lastfm_network.get_user(cur_user).get_recent_tracks(time_from = past_date, time_to=date, limit=None)
-    if top_list == []:
+    try:
         new_date = int(lastfm_network.get_user(cur_user).get_recent_tracks(limit=1)[0][3])
+        if not new_date:
+            return None
         new_past_date = str(datetime.date.fromtimestamp(new_date) - timedelta(days=60))
         new_past_date = int(time.mktime(time.strptime(new_past_date, '%Y-%m-%d')))
         top_list = lastfm_network.get_user(cur_user).get_recent_tracks(time_from=new_past_date, time_to=new_date,limit=None)
+    except 	IndexError:
+        return None
     for top_item in top_list:
         date_utc = datetime.date.fromtimestamp(int(top_item.timestamp))
         chart = Chart(

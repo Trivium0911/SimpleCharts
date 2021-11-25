@@ -24,3 +24,6 @@ class SignUpView(CreateView):
 
 def SimpleCharts(request):
     return render(request,"simplecharts.html")
+
+def start(request):
+    return render(request,"start.html")

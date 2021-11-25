@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, include
-from SimpleCharts.views import SignUpView, SimpleCharts
-
+from SimpleCharts.views import SignUpView, SimpleCharts, start
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,4 +10,5 @@ urlpatterns = [
     path ("start/signup/", SignUpView.as_view(),name='signup'),
     path ("start/login/", LoginView.as_view(),name='login'),
     path ("logout/", LogoutView.as_view(), name='logout'),
+    path ("", start, name='start')
     ]

@@ -6,7 +6,7 @@
 <h2> LAST LISTENED </h2>
 
 
-
+<p>  Date is in the time zone UTC±00:00 </p>
 
  <form action = "{% url 'charts' %}"><button class="btn btn-secondary"> BACK </button> </form>
     <ul class = 'pages'>
@@ -24,7 +24,6 @@
             <th>DATE</th>
         </tr>
     {% for list in pages_charts %}
-
     <tr>
         <td><a href="https://www.last.fm/music/{{ list.artist }}" target="_blank">{{ list.artist }}</a></td>
         <td>{{ list.song_title }}</td>

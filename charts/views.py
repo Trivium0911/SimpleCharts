@@ -215,8 +215,7 @@ def top_tracks_week(request):
 
 def last_listened(request):
     cur_user= get_user(request)
-    user_chart = chart.filter(username=cur_user)
-    user_chart = user_chart.order_by("-date_utc")
+    user_chart = chart.filter(username=cur_user).order_by("-date_utc")
     try:
         pages_charts = pagination(request, user_chart)
     except TypeError:

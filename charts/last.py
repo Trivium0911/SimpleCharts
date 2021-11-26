@@ -44,7 +44,7 @@ def pagination(request,top):
     return obj
 
 def datefilter(cur_user,period):
-    user_charts = chart.filter(username=cur_user)
+    user_charts = chart.filter(username=cur_user).order_by("-date_utc")
     if not user_charts:
         return None
     startdate = user_charts[0].date_utc

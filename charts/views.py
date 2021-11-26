@@ -25,7 +25,7 @@ def download_user_db(request):
     try:
         if request.method == "POST" and 'btnform1' in request.POST:
             pack_to_db(cur_user)
-            return render(request, "charts/download.html")
+
         if request.method == "POST" and 'btnform2' in request.POST:
             pack_to_db2(cur_user)
             return render(request, "charts/download.html")

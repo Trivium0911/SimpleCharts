@@ -15,7 +15,7 @@
 
 ### _About the project:_
 
-__SimpleCharts__ is a service for viewing statistics of listened tracks, top artists, albums and artists on last.fm in a more informative form.
+__SimpleCharts__ is a service for viewing statistics of listened tracks, top artists, albums and artists on __last.fm__ in a more informative form.
 
 ### _The project is a website with the following functions:_
 

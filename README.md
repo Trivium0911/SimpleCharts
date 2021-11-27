@@ -31,7 +31,7 @@ __SimpleCharts__ is a service for viewing statistics of listened tracks, top art
 
 ### Installing and running the project:
 1. Create an account at __last.fm__ (https://www.last.fm/).
-2. Create API and get API tokens from __last.fm API__ (https://www.last.fm/api/account/create?_pjax=%23content).
+2. Create an API account and get API tokens from __last.fm API__ (https://www.last.fm/api/account/create?_pjax=%23content).
 3. Install packages from requirements.txt file.
 4. Set the environment variable __DEBUG__ (True - for local launch).
 5. Set the environment variables __API_KEY__ and __API_SECRET__ received from __last.fm API__.

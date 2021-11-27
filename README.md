@@ -35,7 +35,7 @@ __SimpleCharts__ is a service for viewing statistics of listened tracks, top art
 4. Set the environment variable DEBUG (True - for local launch)
 5. Set the environment variables API_KEY and API_SECRET received from __last.fm API__.
 6. Add the environment variable DATABASE_URL, indicating the url to the connected database
-7. (not necessary) Set the environment variable lastfm_username according to the name of the account owner of the API.
+7. Set the environment variable lastfm_username according to the name of the account owner of the API (not necessary).
 4. Run the following commands from the directory:
 
     - Apply migrations

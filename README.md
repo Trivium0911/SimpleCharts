@@ -28,7 +28,7 @@ __SimpleCharts__ is a service for viewing statistics of listened tracks, top art
 * viewing top listened albums per week / month / 3 months / 6 months / year.
 
 
-### _Installing and running the project:
+### Installing and running the project:
 1. Create an account at __last.fm__ (https://www.last.fm/).
 2. Create API and get API tokens from __last.fm API__ (https://www.last.fm/api/account/create?_pjax=%23content).
 3. Install packages from requirements.txt file.

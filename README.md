@@ -19,13 +19,14 @@ __SimpleCharts__ is a service for viewing statistics of listened tracks, top art
 
 ### _The project is a website with the following functions:_
 
-* registration and authorization of users;
-* getting information from __last.fm__ user.
-* saving __last.fm__ user's information to the database.
-* viewing the songs you've listened to.
-* viewing top listened tracks per week / month / 3 months / 6 months / year.
-* viewing top listened artists per week / month / 3 months / 6 months / year.
-* viewing top listened albums per week / month / 3 months / 6 months / year.
+* registration and authorization of users
+* getting information from __last.fm__ user
+* saving __last.fm__ user's information to the database
+* viewing the songs you've listened to
+* viewing top listened tracks per week / month / 3 months / 6 months / year
+* viewing top listened artists per week / month / 3 months / 6 months / year
+* viewing top listened albums per week / month / 3 months / 6 months / year
+* clearing the database to load more recent information
 
 
 ### Installing and running the project:

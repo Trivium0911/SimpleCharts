@@ -42,7 +42,7 @@ __SimpleCharts__ is a service for viewing statistics of listened tracks, top art
         ```
         python manage.py migrate
         ```
-    - Create a superuser for access to project administration (the project configuration is set to Russian)
+    - Create a superuser for access to project administration
         ```
         python manage.py createsuperuser
         ```

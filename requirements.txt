@@ -4,7 +4,6 @@ uvicorn
 psycopg2-binary
 pytest
 pytest-asyncio
-httpx
 psycopg2
 dj-database-url
 django-ipware

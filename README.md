@@ -51,8 +51,4 @@ __SimpleCharts__ is a service for viewing statistics of listened tracks, top art
         ```
         python manage.py runserver
         ```
-<<<<<<< HEAD
----	
-=======
----	
->>>>>>> origin/main
+

@@ -14,10 +14,10 @@ def chart_list(request):
     cur_user = get_user(request)
     user_chart = chart.filter(username = cur_user)
     if not user_chart:
-        return render(request, 'charts/chart_list.html', { "no_charts": "You haven't charts"})
+        return render(request, 'charts/chart_list.html', {"no_charts": "You haven't charts"})
     first_date = user_chart.first()
     last_date = getattr(first_date, "date")
-    return render(request, 'charts/chart_list.html', { "last_date": last_date })
+    return render(request, 'charts/chart_list.html', {"last_date": last_date})
 
 
 def download_user_db(request):
@@ -53,7 +53,7 @@ def delete_user_db(request):
             clear_user_db(cur_user)
         except AttributeError:
             return redirect("charts")
-    return render (request,"charts/delete.html")
+    return render(request, "charts/delete.html")
 
 
 
@@ -61,17 +61,17 @@ def delete_user_db(request):
 def top_artists_year(request):
     cur_user = get_user(request)
     period = 365
-    top_artists_year = get_top_artists(cur_user,period)
+    top_artists_year = get_top_artists(cur_user, period)
     try:
-        pages_artists_year = pagination(request,top_artists_year)
+        pages_artists_year = pagination(request, top_artists_year)
     except TypeError:
         return render(request, "charts/top_artists/artists_year.html")
-    return render(request,"charts/top_artists/artists_year.html",{"pages_artists_year": pages_artists_year})
+    return render(request, "charts/top_artists/artists_year.html", {"pages_artists_year": pages_artists_year})
 
 def top_tracks_year(request):
     cur_user = get_user(request)
     period = 365
-    top_tracks_year = get_top_tracks(cur_user,period)
+    top_tracks_year = get_top_tracks(cur_user, period)
     try:
         pages_tracks_year = pagination(request, top_tracks_year)
     except TypeError:
@@ -82,7 +82,7 @@ def top_tracks_year(request):
 def top_albums_year(request):
     cur_user = get_user(request)
     period = 365
-    top_albums_year = get_top_albums(cur_user,period)
+    top_albums_year = get_top_albums(cur_user, period)
     try:
         pages_albums_year = pagination(request, top_albums_year)
     except TypeError:
@@ -93,9 +93,9 @@ def top_albums_year(request):
 def top_artists_6month(request):
     cur_user = get_user(request)
     period = 183
-    top_artists_6month = get_top_artists(cur_user,period)
+    top_artists_6month = get_top_artists(cur_user, period)
     try:
-        pages_artists_6month = pagination(request,top_artists_6month)
+        pages_artists_6month = pagination(request, top_artists_6month)
     except TypeError:
         return render(request, "charts/top_artists/artists_6month.html")
     return render(request, "charts/top_artists/artists_6month.html", {"pages_artists_6month": pages_artists_6month})
@@ -104,7 +104,7 @@ def top_artists_6month(request):
 def top_artists_3month(request):
     cur_user = get_user(request)
     period = 90
-    top_artists_3month = get_top_artists(cur_user,period)
+    top_artists_3month = get_top_artists(cur_user, period)
     try:
         pages_artists_3month = pagination(request, top_artists_3month)
     except TypeError:
@@ -115,17 +115,17 @@ def top_artists_3month(request):
 def top_artists_month(request):
     cur_user = get_user(request)
     period = 30
-    top_artists_month = get_top_artists(cur_user,period)
+    top_artists_month = get_top_artists(cur_user, period)
     try:
         pages_artists_month = pagination(request, top_artists_month)
     except TypeError:
         return render(request, "charts/top_artists/artists_month.html")
-    return render(request,"charts/top_artists/artists_month.html",{"pages_artists_month" : pages_artists_month})
+    return render(request,"charts/top_artists/artists_month.html" ,{"pages_artists_month": pages_artists_month})
 
 def top_artists_week(request):
     cur_user = get_user(request)
     period = 7
-    top_artists_week = get_top_artists(cur_user,period)
+    top_artists_week = get_top_artists(cur_user, period)
     try:
         pages_artists_week = pagination(request, top_artists_week)
     except TypeError:
@@ -136,7 +136,7 @@ def top_artists_week(request):
 def top_albums_6month(request):
     cur_user = get_user(request)
     period = 183
-    top_albums_6month = get_top_albums(cur_user,period)
+    top_albums_6month = get_top_albums(cur_user, period)
     try:
         pages_albums_6month = pagination(request, top_albums_6month)
     except TypeError:
@@ -146,7 +146,7 @@ def top_albums_6month(request):
 def top_albums_3month(request):
     cur_user = get_user(request)
     period = 90
-    top_albums_3month = get_top_albums(cur_user,period)
+    top_albums_3month = get_top_albums(cur_user, period)
     try:
         pages_albums_3month = pagination(request, top_albums_3month)
     except TypeError:
@@ -156,7 +156,7 @@ def top_albums_3month(request):
 def top_albums_month(request):
     cur_user = get_user(request)
     period = 30
-    top_albums_month = get_top_albums(cur_user,period)
+    top_albums_month = get_top_albums(cur_user, period)
     try:
         pages_albums_month = pagination(request, top_albums_month)
     except TypeError:
@@ -166,7 +166,7 @@ def top_albums_month(request):
 def top_albums_week(request):
     cur_user = get_user(request)
     period = 7
-    top_albums_week = get_top_albums(cur_user,period)
+    top_albums_week = get_top_albums(cur_user, period)
     try:
         pages_albums_week = pagination(request, top_albums_week)
     except TypeError:
@@ -176,7 +176,7 @@ def top_albums_week(request):
 def top_tracks_6month(request):
     cur_user = get_user(request)
     period = 183
-    top_tracks_6month = get_top_tracks(cur_user,period)
+    top_tracks_6month = get_top_tracks(cur_user, period)
     try:
         pages_tracks_6month = pagination(request, top_tracks_6month)
     except TypeError:
@@ -186,7 +186,7 @@ def top_tracks_6month(request):
 def top_tracks_3month(request):
     cur_user = get_user(request)
     period = 90
-    top_tracks_3month = get_top_tracks(cur_user,period)
+    top_tracks_3month = get_top_tracks(cur_user, period)
     try:
         pages_tracks_3month = pagination(request, top_tracks_3month)
     except TypeError:
@@ -196,7 +196,7 @@ def top_tracks_3month(request):
 def top_tracks_month(request):
     cur_user = get_user(request)
     period = 30
-    top_tracks_month = get_top_tracks(cur_user,period)
+    top_tracks_month = get_top_tracks(cur_user, period)
     try:
         pages_tracks_month = pagination(request, top_tracks_month)
     except TypeError:
@@ -206,7 +206,7 @@ def top_tracks_month(request):
 def top_tracks_week(request):
     cur_user = get_user(request)
     period = 7
-    top_tracks_week = get_top_tracks(cur_user,period)
+    top_tracks_week = get_top_tracks(cur_user, period)
     try:
         pages_tracks_week = pagination(request, top_tracks_week)
     except TypeError:

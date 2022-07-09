@@ -74,9 +74,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'SimpleCharts.wsgi.application'
 
 
-DATABASE_URL = os.getenv('DATABASE_URL') or "sqlite://db.sqlite3"
+DATABASE_URL = os.getenv('DATABASE_URL') or os.getenv('HEROKU_POSTGRESQL_PINK_URL') or "sqlite://db.sqlite3"
 assert DATABASE_URL, "no DATABASE_URL provided"
-DATABASES ={
+DATABASES = {
     "default": dj_database_url.parse(DATABASE_URL),
 
 }

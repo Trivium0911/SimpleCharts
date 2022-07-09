@@ -27,3 +27,4 @@ def simplecharts(request):
 
 def start(request):
     return render(request,"start.html")
+

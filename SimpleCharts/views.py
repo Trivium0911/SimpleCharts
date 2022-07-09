@@ -22,6 +22,7 @@ class SignUpView(CreateView):
         login(self.request, self.object)
         return valid
 
+
 def simplecharts(request):
     return render(request,"simplecharts.html")
 

@@ -16,7 +16,8 @@ DEBUG =os.getenv("DEBUG")
 
 ALLOWED_HOSTS = [
    "simplechartsgrads.herokuapp.com",
-     "localhost",
+    "localhost",
+    '127.0.0.1'
     ]
 
 
